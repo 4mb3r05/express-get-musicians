@@ -10,13 +10,16 @@ const app = require('./src/app');
 const seedMusician = require("./seedData");
 
 
-describe('./musicians endpoint', () => {
-    // Write your tests here
+describe("GET /musicians endpoint", () => {
+    test("returns a list of musicians", async () => {
+      const response = await request(app).get("/musicians");
+  
+      expect(response.statusCode).toBe(200);
+  
+      const musicians = JSON.parse(response.text);
+  
+      expect(Array.isArray(musicians)).toBe(true);
+  
+    });
     
-    
-
-
-
-
-    
-})
+  });
